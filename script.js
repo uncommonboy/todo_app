@@ -2,7 +2,7 @@ const form = document.querySelector(".form");
 const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
-const input = document.querySelector(".input");
+
 console.log(form);
 const todos = [];
 
