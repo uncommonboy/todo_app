@@ -106,11 +106,15 @@ body {
 }
 
 .block {
-  height: 500px;
+ height: 500px;
   width: 350px;
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  display: 1 1 auto;
+  flex-direction: column;
   background: #d0caca;
   border-radius: 12px;
+  overflow: auto;
   padding: 32px;
 }
 
@@ -141,9 +145,7 @@ body {
 
 .todosList {
   margin-bottom: 11px;
-  min-height: 200px;
-  align-self: flex-start;
-}
+  }
 
 .todo {
   display: flex;
