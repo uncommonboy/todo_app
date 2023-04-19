@@ -107,6 +107,7 @@ body {
 
 .block {
   height: 700px;
+  width: 500PX;
   display: grid;
   background: #d0caca;
   border-radius: 12px;
