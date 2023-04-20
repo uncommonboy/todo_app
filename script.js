@@ -3,7 +3,7 @@ const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
 const edit = document.querySelector("#edit");
-  const todos = [];
+  let todos = [];
 
 const render = () => {
  list.innerHTML="";
@@ -31,16 +31,18 @@ form.addEventListener("submit", (event) => {
 });
 
 clear.addEventListener("click", () => {
-  list.innerHTML = [];
-});
-
-edit.addEventListener("click", () => {
-  const todo_inp = querySelector(".todo_input");
-  todo_inp.removeAttr("disabled");
-  console.log("salom");
+  todos = [];
+  render()
 });
 
 // add.addEventListener("click", () => {
 //   const inp = document.querySelector(".input");
 //   inp.value = "";
+//   render()
 // });
+// edit.addEventListener("click", () => {
+//   const todo_inp = querySelector(".todo_input");
+//   todo_inp.removeAttr();
+//   console.log(todo_inp);
+// });
+
