@@ -103,6 +103,9 @@ body {
   line-height: 68px;
   color: #8c8888;
   margin-bottom: 34px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  border-radius: 10px ;
+
 }
 
 .block {
@@ -121,24 +124,33 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 11px;
+
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .input {
   padding: 0 16px;
   background: #ffffff;
-  border: 1px solid #e5e9eb;
+  border: 3px solid #e5e9eb;
   border-radius: 6px;
   width: 77%;
   height: 40px;
   box-shadow: 0 0 10px rgb(0, 0, 0);
   font-size: 20px;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .add {
+  font-size: 20px;
   width: 20%;
   height: 40px;
-  background: #92969a;
+  background: #555758;
   border-radius: 6px;
+  border: 3px solid #e5e9eb;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
   color: white;
 }
 
@@ -147,7 +159,6 @@ body {
   display: grid;
   gap: 11px;
 }
-
 
 .todo {
   display: flex;
@@ -159,11 +170,15 @@ body {
   background: #ffffff;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
-  box-shadow: 0 0 10px black;
+  border: 3px solid black;
+  box-shadow: 0 0 10px black;  background-color: #555758;
+  color: #ffffff;
+
 }
 
 .todo_input {
-  flex-grow: 1;
+  flex-grow: 1;background-color: #555758;
+  color: #ffffff;
 }
 
 .edit {
@@ -176,21 +191,22 @@ body {
 
 .clear {
   cursor: pointer;
-  justify-self: center;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.006em;
   color: #fbfbfb;
   width: max-content;
   margin: 0 auto;
-  align-self: flex-end;
   font-size: 30px;
-  box-shadow: 0, 6px, 240px rgb(255, 255, 255);
-  border: 1px solid rgb(86, 86, 109);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  border: 5px solid rgb(86, 86, 109);
   background-color: #92969a;
   margin-top: 20px;
   border-radius: 6px;
+  height: 40px;
+display: flex;
+align-items: center;
 }
-.btn_b{
+.btn_b {
   padding: 10px;
 }
