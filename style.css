@@ -105,7 +105,7 @@ body {
   margin-bottom: 34px;
   box-shadow: 0 0 10px rgb(255, 255, 255);
   border-radius: 10px ;
-
+cursor: pointer;
 }
 
 .block {
@@ -116,7 +116,7 @@ body {
   flex-direction: column;
   background: #d0caca;
   border-radius: 12px;
-  overflow: auto;
+  /* overflow: auto; */
   padding: 32px;
 }
 
@@ -165,7 +165,6 @@ body {
   align-items: center;
   gap: 10px;
   padding: 0 24px;
-  width: 100%;
   height: 48px;
   background: #ffffff;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
@@ -173,20 +172,44 @@ body {
   border: 3px solid black;
   box-shadow: 0 0 10px black;  background-color: #555758;
   color: #ffffff;
-
 }
 
 .todo_input {
   flex-grow: 1;background-color: #555758;
   color: #ffffff;
+  height: 100%;
+  width: 70%;
+  font-size: 20px;
+  /* cursor: pointer; */
+}
+
+.checkbox{
+  font-size: 30px;
+  cursor: pointer;
 }
 
 .edit {
   cursor: pointer;
 }
+.edit:hover{
+  border: 2px solid green;
+  box-shadow: 0 0 10px rgb(34, 198, 77);
+  background-color: rgb(255, 244, 244);
+  color: #000000;
+  border-radius:10px ;
+  padding: 2px;
+}
 
 .delete {
   cursor: pointer;
+}
+.delete:hover{
+  border: 1px solid rgb(73, 72, 72);
+  box-shadow: 0 0 10px rgb(255, 0, 0);
+  background-color: rgb(245, 13, 13);
+  color: #ffffff;
+  border-radius:10px ;
+  padding: 2px;
 }
 
 .clear {
@@ -206,6 +229,10 @@ body {
   height: 40px;
 display: flex;
 align-items: center;
+}
+.clear:hover{
+  box-shadow: 0 0 20px rgb(255, 1, 1);
+
 }
 .btn_b {
   padding: 10px;

@@ -7,10 +7,11 @@ console.log(form);
 const todos = [];
 
 const render = () => {
-  list.innerHTML = '';
+  list.innerHTML = "";
   for (let element of todos) {
     list.innerHTML += ` <li class="todo">
-        <input value="${element.value}" class="todo_input" type="text" />
+    <input class='checkbox' type="checkbox">
+        <input  value="${element.value}" class="todo_input" type="text" />
         <div class="edit">
           <i class="bx bx-sm bxs-pencil"></i>
         </div>
@@ -34,4 +35,7 @@ clear.addEventListener("click", () => {
   list.innerHTML = [];
 });
 
-
+// add.addEventListener("click", () => {
+//   const inp = document.querySelector(".input");
+//   inp.value = "";
+// });
