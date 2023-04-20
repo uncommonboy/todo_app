@@ -106,11 +106,10 @@ body {
 }
 
 .block {
- height: 500px;
+  height: 500px;
   width: 350px;
   /* display: grid; */
   display: flex;
-  display: 1 1 auto;
   flex-direction: column;
   background: #d0caca;
   border-radius: 12px;
@@ -145,7 +144,10 @@ body {
 
 .todosList {
   margin-bottom: 11px;
-  }
+  display: grid;
+  gap: 11px;
+}
+
 
 .todo {
   display: flex;
@@ -158,10 +160,6 @@ body {
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   box-shadow: 0 0 10px black;
-
-  &:not(:last-child) {
-    margin-bottom: 11px;
-  }
 }
 
 .todo_input {
@@ -182,10 +180,17 @@ body {
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.006em;
-  color: #0e73f6;
+  color: #fbfbfb;
   width: max-content;
   margin: 0 auto;
   align-self: flex-end;
   font-size: 30px;
-  box-shadow: 0, 6px, 10px black;
+  box-shadow: 0, 6px, 240px rgb(255, 255, 255);
+  border: 1px solid rgb(86, 86, 109);
+  background-color: #92969a;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+.btn_b{
+  padding: 10px;
 }

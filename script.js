@@ -7,7 +7,7 @@ console.log(form);
 const todos = [];
 
 const render = () => {
-  list.innerHTML = "";
+  list.innerHTML = '';
   for (let element of todos) {
     list.innerHTML += ` <li class="todo">
         <input value="${element.value}" class="todo_input" type="text" />
