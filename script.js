@@ -3,11 +3,10 @@ const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
 const edit = document.querySelector("#edit");
-console.log(form);
-const todos = [];
+  const todos = [];
 
 const render = () => {
-  list.innerHTML = "";
+ list.innerHTML="";
   for (let element of todos) {
     list.innerHTML += ` <li class="todo">
     <input class='checkbox'  type="checkbox">
