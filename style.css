@@ -116,7 +116,7 @@ cursor: pointer;
   flex-direction: column;
   background: #d0caca;
   border-radius: 12px;
-  /* overflow: auto; */
+  overflow: auto;
   padding: 32px;
 }
 
