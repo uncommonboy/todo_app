@@ -3,24 +3,37 @@ const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
 const edit = document.querySelector("#edit");
-  let todos = [];
+let todos = [{value:`reading books ${checkbox=true  }`, value:'playing football'}];
 
 const render = () => {
- list.innerHTML="";
+  list.innerHTML = "";
   for (let element of todos) {
     list.innerHTML += ` <li class="todo">
-    <input class='checkbox'  type="checkbox">
-    <input disabled="disabled" value="${element.value}" class="todo_input" type="text" />
+    <input class='checkbox'  ${checkbox == true ? "checked" : ""} onclick="oncheck('${element.id}')" type="checkbox"/> 
+
+      <input disabled="disabled" value="${
+        element.value
+      }" class="todo_input" type="text" />
     <div class="edit">
     <i id='edit' class="bx bx-sm bxs-pencil"></i>
         </div>
         <div class="delete">
-        <i class="bx bx-sm bx-trash"></i>
+        <i onclick="deleteTodo('${element.id}')" class="bx bx-sm bx-trash"></i>
         </div>
         </li>`;
   }
 };
 render();
+const deleteTodo = (id) => {
+  todos = todos.filter((v) => v.id != id);
+  render();
+  console.log("delete", id, todos);
+};
+const oncheck = (id) => {
+  todos = todos.map((v) => (v.id == id ? { ...v, isdone: !isdone } : v));
+  render();
+  console.log("check", todos);
+};
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -32,7 +45,7 @@ form.addEventListener("submit", (event) => {
 
 clear.addEventListener("click", () => {
   todos = [];
-  render()
+  render();
 });
 
 // add.addEventListener("click", () => {
@@ -45,4 +58,3 @@ clear.addEventListener("click", () => {
 //   todo_inp.removeAttr();
 //   console.log(todo_inp);
 // });
-

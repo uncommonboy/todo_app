@@ -85,7 +85,10 @@ body {
 
 .wrapper {
   height: 100vh;
-  background: #000000;
+}
+.main_img {
+  width: 100%;
+  height: 100%;
 }
 
 .container {
@@ -96,16 +99,17 @@ body {
 }
 
 .title {
+  backdrop-filter: blur(10px);
   text-align: center;
   font-family: "Inter";
   font-weight: 700;
   font-size: 56px;
   line-height: 68px;
-  color: #8c8888;
+  color: #ffffff;
   margin-bottom: 34px;
   box-shadow: 0 0 10px rgb(255, 255, 255);
-  border-radius: 10px ;
-cursor: pointer;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .block {
@@ -114,17 +118,17 @@ cursor: pointer;
   /* display: grid; */
   display: flex;
   flex-direction: column;
-  background: #d0caca;
+  /* background: #01a884; */
   border-radius: 12px;
-  overflow: auto;
   padding: 32px;
 }
 
 .form {
+
   display: flex;
   justify-content: space-between;
   margin-bottom: 11px;
-
+  
   position: sticky;
   top: 0;
   z-index: 999;
@@ -132,29 +136,33 @@ cursor: pointer;
 
 .input {
   padding: 0 16px;
-  background: #ffffff;
   border: 3px solid #e5e9eb;
   border-radius: 6px;
   width: 77%;
   height: 40px;
-  box-shadow: 0 0 10px rgb(0, 0, 0);
+  box-shadow: 0 0 10px rgb(247, 231, 0);
   font-size: 20px;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #e7e1e1;
+  color: #000000;
 }
 
 .add {
   font-size: 20px;
   width: 20%;
   height: 40px;
-  background: #555758;
+  background: #096138;
   border-radius: 6px;
   border: 3px solid #e5e9eb;
-  box-shadow: 0 0 10px rgb(0, 0, 0);
+  box-shadow: 0 0 10px rgb(13, 11, 129);
   color: white;
 }
 
 .todosList {
+  backdrop-filter: blur(20px);
+  overflow: auto;
+overflow-y: hidden;
+
+
   margin-bottom: 11px;
   display: grid;
   gap: 11px;
@@ -170,12 +178,15 @@ cursor: pointer;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 3px solid black;
-  box-shadow: 0 0 10px black;  background-color: #555758;
+  box-shadow: 0 0 10px black;
+  background-color: #555758;
   color: #ffffff;
+  background-color: #5e0fa8;
 }
 
 .todo_input {
-  flex-grow: 1;background-color: #555758;
+  flex-grow: 1;
+  background-color: #5e0fa8;
   color: #ffffff;
   height: 100%;
   width: 70%;
@@ -183,7 +194,7 @@ cursor: pointer;
   /* cursor: pointer; */
 }
 
-.checkbox{
+.checkbox {
   font-size: 30px;
   cursor: pointer;
 }
@@ -191,24 +202,24 @@ cursor: pointer;
 .edit {
   cursor: pointer;
 }
-.edit:hover{
+.edit:hover {
   border: 2px solid green;
   box-shadow: 0 0 10px rgb(34, 198, 77);
   background-color: rgb(255, 244, 244);
   color: #000000;
-  border-radius:10px ;
+  border-radius: 10px;
   padding: 2px;
 }
 
 .delete {
   cursor: pointer;
 }
-.delete:hover{
+.delete:hover {
   border: 1px solid rgb(73, 72, 72);
   box-shadow: 0 0 10px rgb(255, 0, 0);
   background-color: rgb(245, 13, 13);
   color: #ffffff;
-  border-radius:10px ;
+  border-radius: 10px;
   padding: 2px;
 }
 
@@ -222,17 +233,15 @@ cursor: pointer;
   margin: 0 auto;
   font-size: 30px;
   box-shadow: 0 0 10px rgb(255, 255, 255);
-  border: 5px solid rgb(86, 86, 109);
-  background-color: #92969a;
+  background-color: #2b1423;
   margin-top: 20px;
   border-radius: 6px;
   height: 40px;
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
-.clear:hover{
+.clear:hover {
   box-shadow: 0 0 20px rgb(255, 1, 1);
-
 }
 .btn_b {
   padding: 10px;
