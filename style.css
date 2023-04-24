@@ -174,20 +174,18 @@ overflow-y: hidden;
   gap: 10px;
   padding: 0 24px;
   height: 48px;
-  background: #ffffff;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 3px solid black;
   box-shadow: 0 0 10px black;
-  background-color: #555758;
-  color: #ffffff;
-  background-color: #5e0fa8;
+  background-color: #bbddff;
+  color: #000000;
 }
 
 .todo_input {
   flex-grow: 1;
-  background-color: #5e0fa8;
-  color: #ffffff;
+  background-color: #bbddff;
+  color: #000000;
   height: 100%;
   width: 70%;
   font-size: 20px;
@@ -233,7 +231,7 @@ overflow-y: hidden;
   margin: 0 auto;
   font-size: 30px;
   box-shadow: 0 0 10px rgb(255, 255, 255);
-  background-color: #2b1423;
+  background-color: #34306e;
   margin-top: 20px;
   border-radius: 6px;
   height: 40px;
