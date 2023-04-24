@@ -123,6 +123,11 @@ body {
   padding: 32px;
 }
 
+.filter b{
+  font-size: 15px;
+}
+
+
 .form {
 
   display: flex;

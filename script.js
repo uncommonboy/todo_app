@@ -2,15 +2,28 @@ const form = document.querySelector(".form");
 const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
-const edit = document.querySelector("#edit");
+const select=document.querySelector('.filter_by_status')
+console.log(select);
 let todos = [
   { value: `reading books`, isdone: true ,id:1},
   { value: "playing football", isdone: false,id:2 },
 ];
+let status='all'
+
+filterTodosByStatus=(status,todos)=>{
+  switch(status){
+    case 'Completed':
+      return todos.filter((v)=>v.isdone);
+      case 'proccess':
+        return todos.filter((v)=> !v.isdone);
+        case "all":
+          return todos
+    }
+}
 
 const render = () => {
   list.innerHTML = "";
-  for (let element of todos) {
+  filterTodosByStatus(status,todos).forEach((element)=>{
     const checkbox = element.isdone;
     console.log(checkbox);
     list.innerHTML += ` <li class="todo">
@@ -21,28 +34,23 @@ const render = () => {
       <input disabled="disabled" value="${
         element.value
       }" class="todo_input" type="text" />
-    <div class="edit">
-    <i id='edit' class="bx bx-sm bxs-pencil"></i>
-        </div>
-        <div class="delete">
-        <i onclick="deleteTodo('${element.id}')" class="bx bx-sm bx-trash"></i>
-        </div>
+      
+          <div class="edit">
+           <i id='edit' class="bx bx-sm bxs-pencil"></i>
+          </div>
+
+          <div class="delete">
+              <i onclick="deleteTodo('${element.id}')" class="bx bx-sm bx-trash"></i>
+          </div>
         </li>`;
-  }
+  })
+  // for (let element of todos) {
+   
+  // }
 };
 render();
-const deleteTodo = (id) => {
-  todos = todos.filter((v) => v.id != id);
-  render();
-  console.log("delete", id, todos);
-};
 
-const oncheck = (id) => {
-  todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
-  render();
-  console.log("check", todos);
-};
-
+//genereting
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const inputValue = event.target[0].value;
@@ -55,19 +63,28 @@ form.addEventListener("submit", (event) => {
   todos.unshift(newTodo);
   render();
 });
+//checking
+const oncheck = (id) => {
+  todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
+  render();
+  console.log("check", todos);
+};
 
+//delete todo
+const deleteTodo = (id) => {
+  todos = todos.filter((v) => v.id != id);
+  render();
+  console.log("delete", id, todos);
+};
+
+//clear all
 clear.addEventListener("click", () => {
   todos = [];
   render();
 });
 
-// add.addEventListener("click", () => {
-//   const inp = document.querySelector(".input");
-//   inp.value = "";
-//   render()
-// });
-// edit.addEventListener("click", () => {
-//   const todo_inp = querySelector(".todo_input");
-//   todo_inp.removeAttr();
-//   console.log(todo_inp);
-// });
+//filter by status
+select.addEventListener('change',(event)=>{
+  status=event.target.value
+  render()
+})
