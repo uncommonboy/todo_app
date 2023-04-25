@@ -5,8 +5,8 @@ const add = document.querySelector(".add");
 const select = document.querySelector(".filter_by_status");
 console.log(select);
 let todos = [
-  { value: `reading books`, isdone: true, id: "a1" },
-  { value: "playing football", isdone: false, id: "a2" },
+  { value: `reading books`, isdone: true, id: "a1", disabled:false },
+  { value: "playing football", isdone: false, id: "a2", disabled:false },
 ];
 let status = "all";
 
@@ -25,13 +25,13 @@ const render = () => {
   list.innerHTML = "";
   filterTodosByStatus(todos, status).forEach((element) => {
     const checkbox = element.isdone;
+    const disabled = element.disabled;
     list.innerHTML += ` <li class="todo" id="${element.id}">
     <input class='checkbox'  ${
       checkbox == true ? "checked" : ""
     } onclick="oncheck('${element.id}')" type="checkbox"/> 
 
-      <input disabled value="${element.value}" class="todo_input" type="text" />
-
+    <input value="${element.value}" ${disabled == false ? "disabled" : ""} class="todo_input" type="text" />
       <div class="edit">
       <i onclick="onEdit('${element.id}')" class="bx bx-sm bxs-pencil"></i>
     </div>
@@ -61,14 +61,18 @@ const onEdit = (id) => {
   const editButton = getButton(id, "edit");
   const saveButton = getButton(id, "save");
   const cancelButton = getButton(id, "cancel");
-  const input = document.querySelector(".todo_input");
-  input.removeAttribute("disabled");
-  const end = input.value.length;
-  input.setSelectionRange(end,end);
-  input.focus()
+  const a = getButton(id, "todo_input");
+  // const input = document.querySelector(".todo_input");
+  // const end = input.value.length;
+  // input.setSelectionRange(end,end);
+  // input.focus()
+  // console.log(a);
+  
   editButton.style.display = "none";
   saveButton.style.display = "block";
   cancelButton.style.display = "block";
+  console.log(a);
+  a.removeAttribute("disabled")
 };
 
 const closeList = (id) => {
@@ -77,9 +81,9 @@ const closeList = (id) => {
   const editButton = getButton(id, "edit");
   const saveButton = getButton(id, "save");
   const cancelButton = getButton(id, "cancel");
-  const input = document.querySelector(".todo_input");
+  const a = getButton(id, "todo_input");
 
-  input.disabled = true;
+  a.disabled = true;
   editButton.style.display = "block";
   saveButton.style.display = "none";
   cancelButton.style.display = "none";
@@ -90,11 +94,13 @@ const saveList = (id) => {
     document.querySelector(`#${id} .${className}`);
 
   const input = document.querySelector(".todo_input");
-func
+
   input.disabled = true;
   const editButton = getButton(id, "edit");
   const saveButton = getButton(id, "save");
   const cancelButton = getButton(id, "cancel");
+
+// function save()
 
   editButton.style.display = "block";
   saveButton.style.display = "none";
@@ -111,7 +117,7 @@ form.addEventListener("submit", (event) => {
     alert("enter any note");
     return;
   }
-  const newTodo = { value: inputValue, id: "a" + Date.now() };
+  const newTodo = { value: inputValue, id: "a" + Date.now(), disabled:false };
   todos.unshift(newTodo);
   render();
 });
