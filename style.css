@@ -249,3 +249,6 @@ overflow-y: hidden;
 .btn_b {
   padding: 10px;
 }
+.cancel ,.save{
+  display: none;
+}
