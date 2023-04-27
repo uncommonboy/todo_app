@@ -8,23 +8,16 @@ const select = document.querySelector(".filter_by_status");
 
 const night_btn = document.querySelector(".night_btn");
 const day_btn = document.querySelector(".day_btn");
+const video = document.querySelector(".video_mp4");
 night_btn.addEventListener("click", () => {
-  const day_video = document.querySelector(".day_mp4");
-  const night_video = document.querySelector(".night_mp4");
-  day_video.style.display = "none";
-  night_video.style.display = "block";
+ video.src='pexels-new-zealand-4000470-1620x1080-25fps.mp4'
   night_btn.style.display='none'
   day_btn.style.display='block'
-
 ;});
 day_btn.addEventListener("click", () => {
-  const day_video = document.querySelector(".day_mp4");
-  const night_video = document.querySelector(".night_mp4");
-  day_video.style.display = "block";
-  night_video.style.display = "none";
+  video.src='pexels-pixabay-855349-1920x1080-25fps.mp4'
   night_btn.style.display='block'
   day_btn.style.display='none'
-  console.log(night_btn);
 });
 
 let todos = [
