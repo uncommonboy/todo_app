@@ -129,7 +129,10 @@ body {
 }
 .mode{
   height: 40px;
-
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+margin-bottom: 10px;
 }
 .night_mode{
   display: flex;
@@ -149,7 +152,7 @@ button{
   color: #ffffff;
   background-color: Transparent;
   border: 1px solid rgb(105, 105, 105);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(80px);
 }
 .day_mode{
   font-family:Indie Flower ;
