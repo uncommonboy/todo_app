@@ -127,16 +127,45 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+.mode{
+  height: 40px;
+
+}
+.night_mode{
+  display: flex;
+  width: max-content;
+  font-family:Indie Flower ;
+  text-decoration: underline;
+font-size: 20px;
+  display: block;
+}
+button{
+  /* display: flex; */
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: Transparent;
+  border: 1px solid rgb(105, 105, 105);
+  backdrop-filter: blur(8px);
+}
+.day_mode{
+  font-family:Indie Flower ;
+
+  display: none;
+}
 
 .block {
-  height: 500px;
+  height: 300px;
   width: 350px;
   /* display: grid; */
   display: flex;
   flex-direction: column;
   /* background: #01a884; */
   border-radius: 12px;
-  padding: 32px;
+  /* padding: 32px; */
 }
 
 .filter b{
@@ -170,6 +199,7 @@ body {
   color: #000000;
 }
 
+
 .add {
   font-size: 20px;
   width: 20%;
@@ -180,18 +210,26 @@ body {
   box-shadow: 0 0 10px rgb(98, 98, 99);
   color: white;
 }
+.add:hover{
+  width: 20.5%;
+  height: 42px;
+  transition: 0.3s;
+  box-shadow: 3px 3px rgb(161, 161, 161), -0.3em 0 .3em rgb(0, 0, 0);  position: absolute;
+  right: 0;
+}
 
 .todosList {
-  backdrop-filter: blur(20px);
   overflow: auto;
-overflow-y: hidden;
+/* overflow-y: hidden; */
 
 
   margin-bottom: 11px;
   display: grid;
   gap: 11px;
 }
-
+input,button,select,.filter{
+  font-family:Indie Flower ;
+}
 .todo {
   display: flex;
   align-items: center;
@@ -201,9 +239,28 @@ overflow-y: hidden;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 3px solid black;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px rgb(88, 88, 88);
   background-color: #dee0e2;
   color: #000000;
+}
+.todo:hover{
+
+}
+.filter{
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+  /* backdrop-filter: blur(8px); */
+}
+.filter b{
+  font-size: 17px;
+}
+select{
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .todo_input {
@@ -282,3 +339,4 @@ overflow-y: hidden;
   border-radius:10px ;
 
 }
+

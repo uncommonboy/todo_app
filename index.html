@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>To Do List</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@500&family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    <link  rel="shortcut icon" href="images/homework (2).png ">
   </head>
   <body>
     <div class="wrapper">
@@ -22,7 +29,7 @@
         type="video/mp4"
       ></video>
       <video
-      class="day_mp4"
+        class="day_mp4"
         autoplay
         muted
         loop
@@ -31,6 +38,14 @@
       ></video>
       <div class="container">
         <h1 class="title">To Do list APP</h1>
+        <div class="mode">
+          <div class="night_mode">
+            <b>choose the mode:</b> <button><i class="bx bx-moon"></i></button>
+          </div>
+          <div class="day_mode">
+            <b>choose the mode:</b> <button><i class="bx bx-sun"></i></button>
+          </div>
+        </div>
         <div class="block">
           <form class="form">
             <input placeholder="Text input" class="input" type="text" />
