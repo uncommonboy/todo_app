@@ -85,7 +85,7 @@ body {
 
 .wrapper {
   height: 100vh;
-  background: url('images/img_todo.jpg');
+  background-color: rgb(80, 77, 77);
 }
 .main_img {
   width: 100%;
@@ -139,6 +139,9 @@ body {
   top: 0;
   z-index: 999;
 }
+.check{
+  text-decoration: line-through;
+}
 
 .input {
   padding: 0 16px;
@@ -146,7 +149,7 @@ body {
   border-radius: 6px;
   width: 77%;
   height: 40px;
-  box-shadow: 0 0 10px rgb(247, 231, 0);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
   font-size: 20px;
   background-color: #e7e1e1;
   color: #000000;
@@ -156,10 +159,10 @@ body {
   font-size: 20px;
   width: 20%;
   height: 40px;
-  background: #096138;
+  background: #3d3d3d;
   border-radius: 6px;
   border: 3px solid #e5e9eb;
-  box-shadow: 0 0 10px rgb(13, 11, 129);
+  box-shadow: 0 0 10px rgb(98, 98, 99);
   color: white;
 }
 
@@ -184,13 +187,13 @@ overflow-y: hidden;
   border-radius: 8px;
   border: 3px solid black;
   box-shadow: 0 0 10px black;
-  background-color: #bbddff;
+  background-color: #dee0e2;
   color: #000000;
 }
 
 .todo_input {
   flex-grow: 1;
-  background-color: #bbddff;
+  background-color: #dee0e2;
   color: #000000;
   height: 100%;
   width: 70%;
@@ -207,10 +210,10 @@ overflow-y: hidden;
   cursor: pointer;
 }
 .edit:hover {
-  border: 2px solid green;
-  box-shadow: 0 0 10px rgb(34, 198, 77);
-  background-color: rgb(255, 244, 244);
-  color: #000000;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  background-color: rgb(46, 43, 43);
+  color: #ffffff;
   border-radius: 10px;
   padding: 2px;
 }
@@ -236,8 +239,8 @@ overflow-y: hidden;
   width: max-content;
   margin: 0 auto;
   font-size: 30px;
-  box-shadow: 0 0 10px rgb(255, 255, 255);
-  background-color: #34306e;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  background-color: #333147;
   margin-top: 20px;
   border-radius: 6px;
   height: 40px;

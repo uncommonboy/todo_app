@@ -32,7 +32,7 @@ const render = () => {
 
     <input value="${element.value}" ${
       disabled == false ? "disabled" : ""
-    } class="todo_input" type="text" />
+    } class="todo_input ${checkbox ? 'check': ''}" type="text" />
       <div class="edit">
       <i onclick="onEdit('${element.id}')" class="bx bx-sm bxs-pencil"></i>
     </div>
@@ -66,12 +66,12 @@ const onEdit = (id) => {
   const end = a.value.length;
   a.setSelectionRange(end, end);
   a.focus();
-  console.log(a.value);
 
   editButton.style.display = "none";
   saveButton.style.display = "block";
   cancelButton.style.display = "block";
   a.removeAttribute("disabled");
+  // render()
 };
 
 const closeList = (id) => {
@@ -86,24 +86,26 @@ const closeList = (id) => {
   editButton.style.display = "block";
   saveButton.style.display = "none";
   cancelButton.style.display = "none";
+  render();
 };
 
 const saveList = (id) => {
   const getButton = (id, className) =>
     document.querySelector(`#${id} .${className}`);
-
-  const a = getButton(id, "todo_input");
+  let a = getButton(id, "todo_input");
+  const index = todos.findIndex((elInTodos) => elInTodos.id === id);
+  todos[index].value = a.value;
 
   a.disabled = true;
   const editButton = getButton(id, "edit");
   const saveButton = getButton(id, "save");
   const cancelButton = getButton(id, "cancel");
 
-  // function save()
-
   editButton.style.display = "block";
   saveButton.style.display = "none";
   cancelButton.style.display = "none";
+
+  render();
 };
 
 //genereting
@@ -124,12 +126,13 @@ form.addEventListener("submit", (event) => {
 const oncheck = (id) => {
   todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
   render();
-  console.log("check", todos);
 };
+
 
 //delete todo
 const deleteTodo = (id) => {
   todos = todos.filter((v) => v.id != id);
+
   render();
   console.log("delete", id, todos);
 };
