@@ -4,28 +4,32 @@ const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
 const select = document.querySelector(".filter_by_status");
 
-//mode changin
+//mode changing
 
 const night_btn = document.querySelector(".night_btn");
 const day_btn = document.querySelector(".day_btn");
 const video = document.querySelector(".video_mp4");
-night_btn.addEventListener("click", () => {
- video.src='pexels-new-zealand-4000470-1620x1080-25fps.mp4'
-  night_btn.style.display='none'
-  day_btn.style.display='block'
-;});
-day_btn.addEventListener("click", () => {
-  video.src='pexels-pixabay-855349-1920x1080-25fps.mp4'
-  night_btn.style.display='block'
-  day_btn.style.display='none'
-});
 
-let todos = [
-  { value: `reading books`, isdone: true, id: "a1", disabled: false },
-  { value: "playing football", isdone: false, id: "a2", disabled: false },
-];
+night_btn.addEventListener("click", () => {
+  video.src = "pexels-new-zealand-4000470-1620x1080-25fps.mp4";
+  night_btn.style.display = "none";
+  day_btn.style.display = "block";
+});
+day_btn.addEventListener("click", () => {
+  video.src = "pexels-pixabay-855349-1920x1080-25fps.mp4";
+  night_btn.style.display = "block";
+  day_btn.style.display = "none";
+});
+////////////////////////////////////////////////////////
+
+const todos=JSON.parse(localStorage.getItem("todos")) || [];
+
+
 let status = "all";
 
+////////////////////////////////////
+
+//filter by status
 filterTodosByStatus = (todos, status) => {
   switch (status) {
     case "Completed":
@@ -37,7 +41,11 @@ filterTodosByStatus = (todos, status) => {
   }
 };
 
+////////////////
+
+//rendering
 const render = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
   list.innerHTML = "";
   filterTodosByStatus(todos, status).forEach((element) => {
     const checkbox = element.isdone;
@@ -70,8 +78,12 @@ const render = () => {
         </li>`;
   });
 };
+
 render();
 
+////////////////////////////////////////
+
+//edit
 const onEdit = (id) => {
   const getButton = (id, className) =>
     document.querySelector(`#${id} .${className}`);
@@ -88,9 +100,12 @@ const onEdit = (id) => {
   saveButton.style.display = "block";
   cancelButton.style.display = "block";
   a.removeAttribute("disabled");
-  // render()
+  render();
 };
 
+/////////////////////////////////
+
+//closeList
 const closeList = (id) => {
   const getButton = (id, className) =>
     document.querySelector(`#${id} .${className}`);
@@ -106,10 +121,13 @@ const closeList = (id) => {
   render();
 };
 
+/////////////////////////////
+
+//saveList
 const saveList = (id) => {
   const getButton = (id, className) =>
     document.querySelector(`#${id} .${className}`);
-  let a = getButton(id, "todo_input");
+  const a = getButton(id, "todo_input");
   const index = todos.findIndex((elInTodos) => elInTodos.id === id);
   todos[index].value = a.value;
 
@@ -125,8 +143,9 @@ const saveList = (id) => {
   render();
 };
 
-//genereting
+/////////////////////////
 
+//genereting infos
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const inputValue = event.target[0].value;
@@ -139,6 +158,7 @@ form.addEventListener("submit", (event) => {
   todos.unshift(newTodo);
   render();
 });
+
 //checking
 const oncheck = (id) => {
   todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
@@ -163,4 +183,5 @@ clear.addEventListener("click", () => {
 select.addEventListener("change", (event) => {
   status = event.target.value;
   render();
+  console.log(event);
 });
