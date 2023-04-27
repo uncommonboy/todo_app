@@ -130,17 +130,18 @@ body {
 .mode{
   height: 40px;
 display: flex;
-flex-direction: column;
-align-items: flex-end;
-margin-bottom: 10px;
+justify-content: flex-end;
+margin-bottom: 20px;
 }
-.night_mode{
-  display: flex;
-  width: max-content;
+.night_btn{
+   box-shadow: 0 0 10px rgb(255, 255, 255);
+
   font-family:Indie Flower ;
   text-decoration: underline;
 font-size: 20px;
-  display: block;
+align-items: center;
+background-color: #000000;
+color: #ffffff;
 }
 button{
   /* display: flex; */
@@ -154,10 +155,15 @@ button{
   border: 1px solid rgb(105, 105, 105);
   backdrop-filter: blur(80px);
 }
-.day_mode{
-  font-family:Indie Flower ;
+.day_btn{  box-shadow: 0 0 10px rgb(0, 0, 0);
 
-  display: none;
+  background-color: #000000;
+color: #ffffff;
+  font-family:Indie Flower ;
+  text-decoration: underline;
+font-size: 20px;
+align-items: center;
+justify-content: center;
 }
 
 .block {

@@ -3,6 +3,30 @@ const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
 const select = document.querySelector(".filter_by_status");
+
+//mode changin
+
+const night_btn = document.querySelector(".night_btn");
+const day_btn = document.querySelector(".day_btn");
+night_btn.addEventListener("click", () => {
+  const day_video = document.querySelector(".day_mp4");
+  const night_video = document.querySelector(".night_mp4");
+  day_video.style.display = "none";
+  night_video.style.display = "block";
+  night_btn.style.display='none'
+  day_btn.style.display='block'
+
+;});
+day_btn.addEventListener("click", () => {
+  const day_video = document.querySelector(".day_mp4");
+  const night_video = document.querySelector(".night_mp4");
+  day_video.style.display = "block";
+  night_video.style.display = "none";
+  night_btn.style.display='block'
+  day_btn.style.display='none'
+  console.log(night_btn);
+});
+
 let todos = [
   { value: `reading books`, isdone: true, id: "a1", disabled: false },
   { value: "playing football", isdone: false, id: "a2", disabled: false },
@@ -32,7 +56,7 @@ const render = () => {
 
     <input value="${element.value}" ${
       disabled == false ? "disabled" : ""
-    } class="todo_input ${checkbox ? 'check': ''}" type="text" />
+    } class="todo_input ${checkbox ? "check" : ""}" type="text" />
       <div class="edit">
       <i onclick="onEdit('${element.id}')" class="bx bx-sm bxs-pencil"></i>
     </div>
@@ -127,7 +151,6 @@ const oncheck = (id) => {
   todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
   render();
 };
-
 
 //delete todo
 const deleteTodo = (id) => {
