@@ -13,7 +13,22 @@
   </head>
   <body>
     <div class="wrapper">
-      <!-- <img class="main_img" src="images/img_todo.jpg" alt=""> -->
+      <video
+        class="night_mp4"
+        autoplay
+        muted
+        loop
+        src="pexels-new-zealand-4000470-1620x1080-25fps.mp4"
+        type="video/mp4"
+      ></video>
+      <video
+      class="day_mp4"
+        autoplay
+        muted
+        loop
+        src="pexels-pixabay-855349-1920x1080-25fps.mp4"
+        type="video/mp4"
+      ></video>
       <div class="container">
         <h1 class="title">To Do list APP</h1>
         <div class="block">
@@ -24,15 +39,13 @@
           <div class="filter">
             <b>Filter by status:</b>
             <select class="filter_by_status">
-            <option value="all">All</option>
-            <option value="Completed">Completed</option>
-            <option value="proccess">proccess</option>
-          </select>
-        </div>
-          
-          <ul class="todosList">
-          </ul>
-          
+              <option value="all">All</option>
+              <option value="Completed">Completed</option>
+              <option value="proccess">proccess</option>
+            </select>
+          </div>
+
+          <ul class="todosList"></ul>
         </div>
         <div class="clear"><b class="btn_b">Clear all</b></div>
       </div>
