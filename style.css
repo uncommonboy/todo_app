@@ -107,6 +107,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
+
 .title {
   backdrop-filter: blur(3px);
   text-align: center;

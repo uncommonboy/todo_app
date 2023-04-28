@@ -22,8 +22,7 @@ day_btn.addEventListener("click", () => {
 });
 ////////////////////////////////////////////////////////
 
-let todos=JSON.parse(localStorage.getItem("todos")) || [];
-
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 let status = "all";
 
@@ -87,17 +86,21 @@ render();
 const onEdit = (id) => {
   const getButton = (id, className) =>
     document.querySelector(`#${id} .${className}`);
-    const editButton = getButton(id, "edit");
-    const saveButton = getButton(id, "save");
-    const cancelButton = getButton(id, "cancel");
-    let a = getButton(id, "todo_input");
-    
-    editButton.style.display = "none";
-    saveButton.style.display = "block";
-    cancelButton.style.display = "block";
+  const editButton = getButton(id, "edit");
+  const saveButton = getButton(id, "save");
+  const cancelButton = getButton(id, "cancel");
+  let a = getButton(id, "todo_input");
+
+  editButton.style.display = "none";
+  saveButton.style.display = "block";
+  cancelButton.style.display = "block";
+  // debugger;
   a.removeAttribute("disabled");
-  render();
-  console.log( );
+  // console.log(a);
+  console.log(editButton);
+  console.log(saveButton.classList);
+  // console.log(cancelButton);
+  // render();
 };
 
 /////////////////////////////////
@@ -127,7 +130,9 @@ const saveList = (id) => {
   const a = getButton(id, "todo_input");
   const index = todos.findIndex((elInTodos) => elInTodos.id === id);
   todos[index].value = a.value;
-
+  if (todos[index].value == "") {
+    alert(" enter your changed version");
+  }
   a.disabled = true;
   const editButton = getButton(id, "edit");
   const saveButton = getButton(id, "save");
@@ -183,46 +188,28 @@ select.addEventListener("change", (event) => {
   console.log(event);
 });
 
-
 //drag and drop
 
-const source=document.getElementsByClassName('todo')
+const source = document.getElementsByClassName("todo");
 
-for (let el of source){
-el.addEventListener('dragstart',(e)=>{
-  console.log(e);
-})
+for (let el of source) {
+  el.addEventListener("dragstart", (e) => {
+    dragstart.preventDefault();
+  });
 
-el.addEventListener('dragend',(e)=>{
-  console.log(e);
-})
+  el.addEventListener("dragend", (e) => {
+    dragend.preventDefault();
+  });
 
-el.addEventListener('dragover',(e)=>{
-  console.log(e);
-})
+  el.addEventListener("dragover", (e) => {
+    dragover.preventDefault();
+  });
 
-el.addEventListener('dragleave',(e)=>{
-  console.log(e);
-})
+  el.addEventListener("dragleave", (e) => {
+    dragleave.preventDefault();
+  });
 
-el.addEventListener('drop',(e)=>{
-  console.log(e);
-})
-
+  el.addEventListener("drop", (e) => {
+    drop.preventDefault();
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
