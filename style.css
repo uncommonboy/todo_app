@@ -165,7 +165,7 @@ button {
 }
 
 .block {
-  height: 300px;
+  height: 400px;
   width: 350px;
   /* display: grid; */
   display: flex;
@@ -338,11 +338,12 @@ select {
   font-size: 30px;
   box-shadow: 0 0 10px rgb(0, 0, 0);
   background-color: #333147;
-  margin-top: 20px;
+  /* margin-top: 250px; */
   border-radius: 6px;
   height: 40px;
   display: flex;
   align-items: center;
+
 }
 .clear:hover {
   box-shadow: 0 0 20px rgb(255, 1, 1);

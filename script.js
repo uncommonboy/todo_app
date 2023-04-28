@@ -111,7 +111,7 @@ const render = () => {
 render();
 
 ////////////////////////////////////////
-const firstTodo = document.querySelector(".block");
+const firstTodo = document.querySelector(".container");
 firstTodo.addEventListener("click", (e) => {
   ///buttonlarni chaqirish
   const abc = e.target.closest(".todo")?.id;
