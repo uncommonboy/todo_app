@@ -22,7 +22,7 @@ day_btn.addEventListener("click", () => {
 });
 ////////////////////////////////////////////////////////
 
-const todos=JSON.parse(localStorage.getItem("todos")) || [];
+let todos=JSON.parse(localStorage.getItem("todos")) || [];
 
 
 let status = "all";
@@ -50,7 +50,7 @@ const render = () => {
   filterTodosByStatus(todos, status).forEach((element) => {
     const checkbox = element.isdone;
     const disabled = element.disabled;
-    list.innerHTML += ` <li class="todo" id="${element.id}">
+    list.innerHTML += ` <li draggable=true class="todo" id="${element.id}">
     <input class='checkbox'  ${
       checkbox == true ? "checked" : ""
     } onclick="oncheck('${element.id}')" type="checkbox"/> 
@@ -87,20 +87,17 @@ render();
 const onEdit = (id) => {
   const getButton = (id, className) =>
     document.querySelector(`#${id} .${className}`);
-
-  const editButton = getButton(id, "edit");
-  const saveButton = getButton(id, "save");
-  const cancelButton = getButton(id, "cancel");
-  let a = getButton(id, "todo_input");
-  const end = a.value.length;
-  a.setSelectionRange(end, end);
-  a.focus();
-
-  editButton.style.display = "none";
-  saveButton.style.display = "block";
-  cancelButton.style.display = "block";
+    const editButton = getButton(id, "edit");
+    const saveButton = getButton(id, "save");
+    const cancelButton = getButton(id, "cancel");
+    let a = getButton(id, "todo_input");
+    
+    editButton.style.display = "none";
+    saveButton.style.display = "block";
+    cancelButton.style.display = "block";
   a.removeAttribute("disabled");
   render();
+  console.log( );
 };
 
 /////////////////////////////////
@@ -169,8 +166,8 @@ const oncheck = (id) => {
 const deleteTodo = (id) => {
   todos = todos.filter((v) => v.id != id);
 
-  render();
   console.log("delete", id, todos);
+  render();
 };
 
 //clear all
@@ -185,3 +182,47 @@ select.addEventListener("change", (event) => {
   render();
   console.log(event);
 });
+
+
+//drag and drop
+
+const source=document.getElementsByClassName('todo')
+
+for (let el of source){
+el.addEventListener('dragstart',(e)=>{
+  console.log(e);
+})
+
+el.addEventListener('dragend',(e)=>{
+  console.log(e);
+})
+
+el.addEventListener('dragover',(e)=>{
+  console.log(e);
+})
+
+el.addEventListener('dragleave',(e)=>{
+  console.log(e);
+})
+
+el.addEventListener('drop',(e)=>{
+  console.log(e);
+})
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
