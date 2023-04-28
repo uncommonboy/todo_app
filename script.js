@@ -3,13 +3,11 @@ const list = document.querySelector(".todosList");
 const clear = document.querySelector(".clear");
 const add = document.querySelector(".add");
 const select = document.querySelector(".filter_by_status");
-
-//mode changing
-
 const night_btn = document.querySelector(".night_btn");
 const day_btn = document.querySelector(".day_btn");
 const video = document.querySelector(".video_mp4");
 
+//mode changing
 night_btn.addEventListener("click", () => {
   video.src = "pexels-new-zealand-4000470-1620x1080-25fps.mp4";
   night_btn.style.display = "none";
@@ -20,12 +18,10 @@ day_btn.addEventListener("click", () => {
   night_btn.style.display = "block";
   day_btn.style.display = "none";
 });
+
 ////////////////////////////////////////////////////////
-
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
-
 let status = "all";
-
 ////////////////////////////////////
 
 //filter by status
@@ -51,35 +47,35 @@ const render = () => {
     const disabled = element.disabled;
     list.innerHTML += `
      <li draggable=true class="todo" id="${element.id}">
-      <input class='checkbox' 
-        ${checkbox == true ? "checked" : ""} 
-        onclick="oncheck('${element.id}')"
-      type="checkbox"/> 
+        <input class='checkbox' 
+          ${checkbox == true ? "checked" : ""} 
+        type="checkbox"/> 
 
-      <input value="${element.value}"
-        ${disabled == false ? "disabled" : ""} 
-        class="todo_input ${checkbox ? "check" : ""}" 
-       type="text" />
+        <input value="${element.value}"
+          ${disabled == false ? "disabled" : ""} 
+          class="todo_input ${checkbox ? "check" : ""}" 
+         type="text" />
 
 
-      <div class="edit">
-         <i " class="bx bx-sm bxs-pencil"></i>
-      </div>
+        <div class="edit">
+           <i " class="bx bx-sm bxs-pencil"></i>
+        </div>
 
-      <div class="save">
-        <i " class="bx bx-sm bx-save"></i>
-      </div>
+        <div class="save">
+          <i " class="bx bx-sm bx-save"></i>
+        </div>
 
-      <div class="cancel">
-        <i " class="bx bx-sm bx-x"></i>
-      </div>
+        <div class="cancel">
+          <i " class="bx bx-sm bx-x"></i>
+        </div>
       
 
-          <div class="delete">
-              <i " class="bx bx-sm bx-trash"></i>
-          </div>
-        </li>`;
+        <div class="delete">
+            <i " class="bx bx-sm bx-trash"></i>
+        </div>
+    </li>`;
   });
+
   //drag and drop
 
   const source = document.getElementsByClassName("todo");
@@ -112,88 +108,73 @@ const render = () => {
     });
   }
 };
-
 render();
 
 ////////////////////////////////////////
 const firstTodo = document.querySelector(".block");
-
 firstTodo.addEventListener("click", (e) => {
+  ///buttonlarni chaqirish
   const abc = e.target.closest(".todo")?.id;
+  const getButton = (abc, className) =>
+    document.querySelector(`#${abc} .${className}`);
+  const editButton = getButton(abc, "edit");
+  const saveButton = getButton(abc, "save");
+  const cancelButton = getButton(abc, "cancel");
+  const a = getButton(abc, "todo_input");
 
+  //clear
   if (e.target.closest("[class='clear']")) {
     todos = [];
     render();
   }
+
+  //delete
   if (e.target.closest(".delete")) {
     todos = todos.filter((v) => v.id != abc);
     render();
   }
-  
+
+  //edit
+  if (e.target.closest(".edit")) {
+    editButton.style.display = "none";
+    saveButton.style.display = "block";
+    cancelButton.style.display = "block";
+    a.removeAttribute("disabled");
+    console.log(editButton);
+  }
+
+  //save
+  if (e.target.closest(".save")) {
+    const index = todos.findIndex((elInTodos) => elInTodos.id === abc);
+    todos[index].value = a.value;
+    if (todos[index].value == "") {
+      alert(" enter your changed version");
+      return;
+    }
+    editButton.style.display = "block";
+    saveButton.style.display = "none";
+    cancelButton.style.display = "none";
+    a.disabled = true;
+    render();
+  }
+
+  //closeList
+  if (e.target.closest(".cancel")) {
+    a.disabled = true;
+    editButton.style.display = "block";
+    saveButton.style.display = "none";
+    cancelButton.style.display = "none";
+    render();
+  }
+
+  //checking
+  if (e.target.closest(".checkbox")) {
+    todos = todos.map((v) => (v.id == abc ? { ...v, isdone: !v.isdone } : v));
+    render();
+  }
 });
 
-//edit
-const onEdit = (id) => {
-  let a = getButton(id, "todo_input");
-
-  editButton.style.display = "none";
-  saveButton.style.display = "block";
-  cancelButton.style.display = "block";
-  // debugger;
-  a.removeAttribute("disabled");
-  // console.log(a);
-  console.log(editButton);
-  console.log(saveButton.classList);
-  // console.log(cancelButton);
-  // render();
-};
-
-/////////////////////////////////
-
-//closeList
-const closeList = (id) => {
-  const getButton = (id, className) =>
-    document.querySelector(`#${id} .${className}`);
-  const editButton = getButton(id, "edit");
-  const saveButton = getButton(id, "save");
-  const cancelButton = getButton(id, "cancel");
-  const a = getButton(id, "todo_input");
-
-  a.disabled = true;
-  editButton.style.display = "block";
-  saveButton.style.display = "none";
-  cancelButton.style.display = "none";
-  render();
-};
-
-/////////////////////////////
-
-//saveList
-const saveList = (id) => {
-  const getButton = (id, className) =>
-    document.querySelector(`#${id} .${className}`);
-  const a = getButton(id, "todo_input");
-  const index = todos.findIndex((elInTodos) => elInTodos.id === id);
-  todos[index].value = a.value;
-  if (todos[index].value == "") {
-    alert(" enter your changed version");
-    return;
-  }
-  a.disabled = true;
-  const editButton = getButton(id, "edit");
-  const saveButton = getButton(id, "save");
-  const cancelButton = getButton(id, "cancel");
-
-  editButton.style.display = "block";
-  saveButton.style.display = "none";
-  cancelButton.style.display = "none";
-
-  render();
-};
-
-/////////////////////////
-
-//genereting infos
+///////////genereting infos///////////
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const inputValue = event.target[0].value;
@@ -207,28 +188,8 @@ form.addEventListener("submit", (event) => {
   render();
 });
 
-//checking
-const oncheck = (id) => {
-  todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
-  render();
-};
-
-//delete todo
-// const deleteTodo = (id) => {
-//   todos = todos.filter((v) => v.id != id);
-//   console.log("delete", id, todos);
-//   render();
-// };
-
-// //clear all
-// clear.addEventListener("click", () => {
-//   todos = [];
-//   render();
-// });
-
 //filter by status
 select.addEventListener("change", (event) => {
   status = event.target.value;
   render();
-  console.log(event);
 });
