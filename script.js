@@ -76,6 +76,39 @@ const render = () => {
           </div>
         </li>`;
   });
+  //drag and drop
+
+const source = document.getElementsByClassName("todo");
+
+let startIndex,dropIndex;
+
+for (let el of source) {
+  el.addEventListener("dragstart", (e) => {
+    let id = el.id;
+    startIndex = todos.findIndex((el) => el.id == id);
+    console.log(startIndex);
+  });
+  el.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+  el.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+  });
+
+  el.addEventListener("drop", (e) => {
+    let id = el.id;
+    dropIndex = todos.findIndex((el) => el.id == id);
+    e.preventDefault();
+  });
+
+  el.addEventListener("dragend", (e) => {
+    let chan = todos.splice(startIndex, 1);
+    todos.splice(dropIndex, 0, chan[0]);
+    e.preventDefault();
+    render()
+  });
+}
+
 };
 
 render();
@@ -132,6 +165,7 @@ const saveList = (id) => {
   todos[index].value = a.value;
   if (todos[index].value == "") {
     alert(" enter your changed version");
+    return;
   }
   a.disabled = true;
   const editButton = getButton(id, "edit");
@@ -170,7 +204,6 @@ const oncheck = (id) => {
 //delete todo
 const deleteTodo = (id) => {
   todos = todos.filter((v) => v.id != id);
-
   console.log("delete", id, todos);
   render();
 };
@@ -188,28 +221,4 @@ select.addEventListener("change", (event) => {
   console.log(event);
 });
 
-//drag and drop
 
-const source = document.getElementsByClassName("todo");
-
-for (let el of source) {
-  el.addEventListener("dragstart", (e) => {
-    dragstart.preventDefault();
-  });
-
-  el.addEventListener("dragend", (e) => {
-    dragend.preventDefault();
-  });
-
-  el.addEventListener("dragover", (e) => {
-    dragover.preventDefault();
-  });
-
-  el.addEventListener("dragleave", (e) => {
-    dragleave.preventDefault();
-  });
-
-  el.addEventListener("drop", (e) => {
-    drop.preventDefault();
-  });
-}
