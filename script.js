@@ -114,13 +114,13 @@ render();
 const firstTodo = document.querySelector(".container");
 firstTodo.addEventListener("click", (e) => {
   ///buttonlarni chaqirish
-  const abc = e.target.closest(".todo")?.id;
-  const getButton = (abc, className) =>
-    document.querySelector(`#${abc} .${className}`);
-  const editButton = getButton(abc, "edit");
-  const saveButton = getButton(abc, "save");
-  const cancelButton = getButton(abc, "cancel");
-  const a = getButton(abc, "todo_input");
+  const id = e.target.closest(".todo")?.id;
+  const getButton = (id, className) =>
+    document.querySelector(`#${id} .${className}`);
+  const editButton = getButton(id, "edit");
+  const saveButton = getButton(id, "save");
+  const cancelButton = getButton(id, "cancel");
+  const a = getButton(id, "todo_input");
 
   //clear
   if (e.target.closest("[class='clear']")) {
@@ -130,7 +130,7 @@ firstTodo.addEventListener("click", (e) => {
 
   //delete
   if (e.target.closest(".delete")) {
-    todos = todos.filter((v) => v.id != abc);
+    todos = todos.filter((v) => v.id != id);
     render();
   }
 
@@ -145,7 +145,7 @@ firstTodo.addEventListener("click", (e) => {
 
   //save
   if (e.target.closest(".save")) {
-    const index = todos.findIndex((elInTodos) => elInTodos.id === abc);
+    const index = todos.findIndex((elInTodos) => elInTodos.id === id);
     todos[index].value = a.value;
     if (todos[index].value == "") {
       alert(" enter your changed version");
@@ -169,7 +169,7 @@ firstTodo.addEventListener("click", (e) => {
 
   //checking
   if (e.target.closest(".checkbox")) {
-    todos = todos.map((v) => (v.id == abc ? { ...v, isdone: !v.isdone } : v));
+    todos = todos.map((v) => (v.id == id ? { ...v, isdone: !v.isdone } : v));
     render();
   }
 });
