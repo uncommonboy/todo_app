@@ -203,6 +203,11 @@ button {
   background-color: #e7e1e1;
   color: #000000;
 }
+.input:hover{
+  box-shadow: 4px 5px rgb(105, 104, 104), -0.3em 0 0.4em rgb(0, 0, 0);
+  transition: 0.3s;
+
+}
 
 .add {
   font-size: 20px;
@@ -313,6 +318,7 @@ select {
   color: #ffffff;
   border-radius: 10px;
   padding: 2px;
+  transition: 0.2s;
 }
 
 .delete {
@@ -325,6 +331,8 @@ select {
   color: #ffffff;
   border-radius: 10px;
   padding: 2px;
+  transition: 0.2s;
+
 }
 
 .clear {
@@ -346,6 +354,8 @@ select {
 
 }
 .clear:hover {
+    transition: 0.2s;
+
   box-shadow: 0 0 20px rgb(255, 1, 1);
 }
 .btn_b {
@@ -359,9 +369,13 @@ select {
   box-shadow: 0 0 10px rgb(255, 0, 0);
   border: 1px solid red;
   border-radius: 10px;
+    transition: 0.2s;
+
 }
 .save:hover {
   box-shadow: 0 0 10px rgb(60, 255, 0);
   border: 1px solid green;
   border-radius: 10px;
+    transition: 0.2s;
+
 }
